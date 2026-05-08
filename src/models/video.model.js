@@ -42,7 +42,7 @@ const videoSchema=new Schema(
     }
 )
 
-videoSchema.plugin
+videoSchema.plugin(mongooseAggregatePaginate)
 
 
 

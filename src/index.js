@@ -32,9 +32,9 @@ const app =express()
 
 // connectDB()
 
-(async() =>{
+;(async() =>{
     try {
-       await mongoose.connect(`{$process.env.MONGODB_UR}/
+       await mongoose.connect(`{$process.env.MONGODB_URI}/
         ${DB_NAME}`)
         app.on("error",(error)=>{
             console.log("ERRR:",error);

@@ -13,7 +13,7 @@ const generateAccessAndRefreshToken= async(userId) =>{
         const accessToken=user.generateAccessToken()
         const refreshToken=user.generateRefreshToken()
         user.refreshToken=refreshToken
-        user.save({validateBeforeSave: false})
+        await user.save({validateBeforeSave: false})
         return {accessToken,refreshToken}
     } catch (error) {
         throw new ApiError(500,"something went wrong while generating access and refresh token")
@@ -321,7 +321,7 @@ const getUserChannelProfile=asyncHandler(async(req,res)=>{
             }
         },{
             $lookup:{
-                from:"sbscriptions",
+                from:"subscriptions",
                 localField:"_id",
                 foreignField:"channel",
                 as:"subscriber"
@@ -353,7 +353,7 @@ const getUserChannelProfile=asyncHandler(async(req,res)=>{
         },
         {
             $project:{
-                fullname:1,
+                fullName:1,
                 username:1,
                 subscribersCount:1,
                 channelIsSubscribedToCount:1,
@@ -442,3 +442,8 @@ export {
     getUserChannelProfile,
     getWatchHistory
 }
+
+
+
+
+
